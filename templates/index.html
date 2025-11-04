@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>AI CHOCH Tarama</title>
+</head>
+<body>
+    <h1>AI CHOCH Tarama</h1>
+    <form action="/scan" method="get">
+        Tarih (YYYY-MM-DD): <input type="text" name="date">
+        <button type="submit">Tarama Yap</button>
+    </form>
+    {% if results %}
+        <h2>Sonuçlar - {{ scan_date }}</h2>
+        <a href="/download_excel?date={{ scan_date }}"><button>Excel İndir</button></a>
+        <a href="/dashboard_full?date={{ scan_date }}"><button>Dashboard Aç</button></a>
+        <table border="1">
+            <tr>
+                <th>Hisse</th>
+                <th>Tarih</th>
+                <th>UP_prob (%)</th>
+                <th>DOWN_prob (%)</th>
+                <th>Close</th>
+            </tr>
+            {% for row in results.itertuples() %}
+            <tr>
+                <td>{{ row.symbol }}</td>
+                <td>{{ row.date }}</td>
+                <td>{{ "%.2f"|format(row._4) }}</td>
+                <td>{{ "%.2f"|format(row._5) }}</td>
+                <td>{{ "%.2f"|format(row.close) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

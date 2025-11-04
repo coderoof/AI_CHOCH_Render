@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>AI CHOCH Full Dashboard</title>
+</head>
+<body>
+    <h1>AI CHOCH Full Dashboard - {{ scan_date }}</h1>
+    <div>
+        <a href="/download_excel?date={{ scan_date }}"><button>Excel İndir</button></a>
+    </div>
+    <h2>Heatmap - UP Probability</h2>
+    <div>{{ graph_html_heat | safe }}</div>
+</body>
+</html>
