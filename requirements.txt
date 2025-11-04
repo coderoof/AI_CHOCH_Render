@@ -1,6 +1,6 @@
 Flask
 pandas
 numpy
-openpyxl
 scikit-learn
-git+https://github.com/onuragdaci/tvdatafeed.git
+yfinance
+openpyxl
